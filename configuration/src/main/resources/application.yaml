@@ -1,0 +1,13 @@
+server:
+  port: 9090
+
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - StripPrefix=1
+      routes:
+        - id: ec-service-order
+          uri: http://localhost:8081
+          predicates:
+            - Path=/ec-service-order/orders/**
