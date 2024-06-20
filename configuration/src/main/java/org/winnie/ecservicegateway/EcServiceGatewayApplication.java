@@ -1,4 +1,4 @@
-package org.winnie.ecservicegateway.configuration;
+package org.winnie.ecservicegateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

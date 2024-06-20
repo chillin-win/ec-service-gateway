@@ -11,3 +11,41 @@ spring:
           uri: http://localhost:8081
           predicates:
             - Path=/ec-service-order/orders/**
+          filters:
+            - JwtFilter=field,username
+      globalcors:
+        cors-configurations:
+          "[/**]":
+            allowedOrigins: "*"
+            allowedHeaders:
+              - content-type
+              - authorization
+            allowedMethods:
+              - DELETE
+              - OPTIONS
+              - PUT
+              - GET
+              - POST
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${OIDC_JWT_JWK_SET_URI}
+
+management:
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include:
+          - info
+          - health
+      path-mapping:
+        health: /healthcheck
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+userservice:
+  url: ${USER_SERVICE}
+
